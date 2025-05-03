@@ -17,7 +17,7 @@ class Product extends Model {
     price: number
 
     @Column({
-        type: DataType.BOOLEAN()
+        type: DataType.BOOLEAN
     })
     availability: boolean
 }

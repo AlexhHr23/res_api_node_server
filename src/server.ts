@@ -18,7 +18,11 @@ const connectDB = async () => {
 connectDB()
 
 
+
 const server = express()
+
+//Leer datos
+server.use(express.json())
 
 server.use('/api/products', router)
 

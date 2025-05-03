@@ -1,20 +1,15 @@
 
 import {Router} from 'express'
+import { createProduct } from './handlers/product'
 
 
 const router = Router()
 
 
 //Routing
-router.get('/', (req, res) => {
+// router.get('/', createProduct)
 
-    res.json('Desde GET')
-})
-
-router.post('/', (req, res) => {
-
-    res.json('Desde POST')
-})
+router.post('/', createProduct)
 
 router.put('/', (req, res) => {
 
