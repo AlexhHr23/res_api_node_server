@@ -57,11 +57,42 @@ const router = Router()
 //All products
 router.get('/', getProducts),
 
+
+
     //Prodyct by id
-    router.get('/:id',
-        param('id').isInt().withMessage('ID no válido'),
-        hadleInputErrors,
-        getProductById),
+/**
+ * @swagger
+ * /api/products/{id}:
+ *  get:
+ *      summary: Get a product by ID
+ *      tags: 
+ *          - Products
+ *      description: Return a product based on its unique ID
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          description: The ID of the product to retrieve
+ *          required: true
+ *          schema:
+ *              type: integer
+ *      responses:
+ *          200:
+ *              description: Sucessful response
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/Product'
+ *          404:
+ *              description: Not found
+ *          400:
+ *              description: Bas request - Invalid ID
+ *              
+ *          
+ */
+router.get('/:id',
+    param('id').isInt().withMessage('ID no válido'),
+    hadleInputErrors,
+    getProductById),
 
 
     //Create product
@@ -100,7 +131,7 @@ router.patch('/:id',
     updateAvailability)
 
 
-router.delete('/:id', 
+router.delete('/:id',
     param('id').isInt().withMessage('ID no válido'),
     hadleInputErrors,
     deleteProduct)
