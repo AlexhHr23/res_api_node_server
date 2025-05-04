@@ -119,7 +119,7 @@ router.get('/:id',
  *                              type: number
  *                              example: 300
  *      responses:
- *         201:
+ *          201:
  *              description: Successful response
  *              content:
  *                  application/json:
@@ -238,6 +238,31 @@ router.patch('/:id',
     hadleInputErrors,
     updateAvailability)
 
+
+/**
+ * @swagger
+ * /api/products/{id}:
+ *  delete:
+ *      summary: Deletes a product by given ID
+ *      tags:
+ *          - Products
+ *      description: Returns the confirmation message
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          description: The ID of the product to delete
+ *          required: true
+ *          schema:
+ *              type: string
+ *              value: 'Producto eliminado'
+ *      responses:
+ *          200:
+ *              description: Successful response
+ *          400:
+ *              description: Bad request - Invalid ID
+ *          404:
+ *              description: Product not found
+ */
 
 router.delete('/:id',
     param('id').isInt().withMessage('ID no válido'),

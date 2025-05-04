@@ -3,7 +3,7 @@ import router from './router'
 import db from './config/db'
 import colors from 'colors'
 import swaggerUi from 'swagger-ui-express'
-import swaggerSpec from './config/swagger'
+import swaggerSpec, {swaggerUiOpionts} from './config/swagger'
 
 //Conectar a base de datos
 export const connectDB = async () => {
@@ -33,7 +33,7 @@ server.use('/api/products', router)
 // })
 
 //Docs 
-server.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
+server.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, swaggerUiOpionts))
 
 
 export default server
