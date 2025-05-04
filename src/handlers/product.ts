@@ -3,23 +3,17 @@ import Product from '../models/Product.module';
 
 
 export const getProducts = async (req: Request, res: Response) => {
-    try {
-        const products = await Product.findAll({
-            order: [
-                ['price', 'DESC']
-            ],
-            attributes: { exclude: ['createdAt', 'updatedAt', 'availability'] }
-        })
-        res.json({ data: products })
-    } catch (error) {
-
-    }
+    const products = await Product.findAll({
+        order: [
+            ['price', 'DESC']
+        ],
+        attributes: { exclude: ['createdAt', 'updatedAt', 'availability'] }
+    })
+    res.json({ data: products })
 }
 
 export const getProductById = async (req: Request, res: Response) => {
-    try {
-        // console.log(req.params.id);
-        const { id } = req.params
+    const { id } = req.params
         const product = await Product.findByPk(id)
 
         if (!product) {
@@ -29,22 +23,12 @@ export const getProductById = async (req: Request, res: Response) => {
         }
 
         res.json({ data: product })
-    } catch (error) {
-        console.log(error);
-    }
 }
 
 export const createProduct = async (req: Request, res: Response) => {
-
-    try {
-        const product = await Product.create(req.body)
+    const product = await Product.create(req.body)
         res.status(201).json({ data: product })
-    } catch (error) {
-        console.log(error);
-    }
-
 }
-
 
 export const updateProduct = async (req: Request, res: Response) => {
 
