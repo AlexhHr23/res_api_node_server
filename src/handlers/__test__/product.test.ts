@@ -1,6 +1,8 @@
 import request from 'supertest'
 import server from '../../server'
 
+
+
 describe('POST /api/products', () => {
 
     test('Should display validation errors', async() => {
