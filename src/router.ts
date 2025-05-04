@@ -15,7 +15,7 @@ router.get('/', getProducts),
 
     //Prodyct by id
     router.get('/:id',
-        param('id').isInt().withMessage('ID no valido'),
+        param('id').isInt().withMessage('ID no válido'),
         hadleInputErrors,
         getProductById),
 
@@ -36,7 +36,7 @@ router.get('/', getProducts),
 router.put('/:id',
 
     //Validaciob en handler
-    param('id').isInt().withMessage('ID no valido'),
+    param('id').isInt().withMessage('ID no válido'),
     body('name')
         .notEmpty().withMessage('El nombre del producto no puede ir vacio'),
 
@@ -51,13 +51,13 @@ router.put('/:id',
     updateProduct)
 
 router.patch('/:id',
-    param('id').isInt().withMessage('ID no valido'),
+    param('id').isInt().withMessage('ID no válido'),
     hadleInputErrors,
     updateAvailability)
 
 
 router.delete('/:id', 
-    param('id').isInt().withMessage('ID no valido'),
+    param('id').isInt().withMessage('ID no válido'),
     hadleInputErrors,
     deleteProduct)
 
