@@ -95,8 +95,37 @@ router.get('/:id',
     getProductById),
 
 
-    //Create product
-    router.post('/',
+
+
+/**
+ * @swagger
+ * /api/products:
+ *  post:
+ *      summary: Creates a new product
+ *      tags:
+ *          - Products
+ *      description: Return a new record in the database
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          name: 
+ *                              type: string
+ *                              example: "Monitor curvo 40 pulgadas"
+ *                          price:
+ *                              type: number
+ *                              example: 300
+ *      responses:
+ *          201:
+ *              description: Product created successfuly
+ *          400:
+ *              description: Bad request - invalid input data
+ */
+    
+router.post('/',
         //Validaciob en handler
         body('name')
             .notEmpty().withMessage('El nombre del producto no puede ir vacio'),
