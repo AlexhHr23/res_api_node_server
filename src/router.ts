@@ -119,12 +119,15 @@ router.get('/:id',
  *                              type: number
  *                              example: 300
  *      responses:
- *          201:
- *              description: Product created successfuly
+ *         201:
+ *              description: Successful response
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/Product'
  *          400:
  *              description: Bad request - invalid input data
  */
-    
 router.post('/',
         //Validaciob en handler
         body('name')
@@ -136,6 +139,53 @@ router.post('/',
             .custom((value) => value > 0).withMessage('Precio no válido'),
         hadleInputErrors,
         createProduct)
+
+
+/**
+ * @swagger
+ * /api/products/{id}:
+ *  put:
+ *      summary: Updates a product with user input
+ *      tags:
+ *          - Products
+ *      description: Returns the updated product
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          description: The ID of the product to retrieve
+ *          required: true
+ *          schema:
+ *              type: integer
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          name: 
+ *                              type: string
+ *                              example: "Monitor curvo 40 pulgadas"
+ *                          price:
+ *                              type: number
+ *                              example: 300
+ *                          availability:
+ *                              type: boolean
+ *                              example: true
+ *      responses:
+ *          200:
+ *              description: Successful response
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/Product'
+ *          400:
+ *              description: Bad request - Invalid ID or invalid input data
+ *          404:
+ *              description: Product not found
+ * 
+ * 
+ */
 
 router.put('/:id',
 
